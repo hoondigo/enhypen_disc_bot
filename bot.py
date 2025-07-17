@@ -17,28 +17,74 @@ def get_random_image(category):
     return os.path.join(folder, random.choice(images))
 
 
-# Shared function to generate a command dynamically
-def create_image_command(name, desc):
-    @interactions.slash_command(name=name, description=desc)
-    async def image_command(ctx: interactions.SlashContext):
-        image_path = get_random_image(name)
-        if image_path:
-            await ctx.send(files=interactions.File(image_path))
-        else:
-            await ctx.send(f"No {name.capitalize()} images found!")
-    return image_command
+# Individual slash commands
+
+@interactions.slash_command(name="jungwon", description="Get a random image of Jungwon")
+async def jungwon(ctx):
+    image_path = get_random_image("jungwon")
+    if image_path:
+        await ctx.send(files=interactions.File(image_path))
+    else:
+        await ctx.send("No Jungwon images found!")
+
+@interactions.slash_command(name="heeseung", description="Get a random image of Heeseung")
+async def heeseung(ctx):
+    image_path = get_random_image("heeseung")
+    if image_path:
+        await ctx.send(files=interactions.File(image_path))
+    else:
+        await ctx.send("No Heeseung images found!")
+
+@interactions.slash_command(name="jay", description="Get a random image of Jay")
+async def jay(ctx):
+    image_path = get_random_image("jay")
+    if image_path:
+        await ctx.send(files=interactions.File(image_path))
+    else:
+        await ctx.send("No Jay images found!")
+
+@interactions.slash_command(name="jake", description="Get a random image of Jake")
+async def jake(ctx):
+    image_path = get_random_image("jake")
+    if image_path:
+        await ctx.send(files=interactions.File(image_path))
+    else:
+        await ctx.send("No Jake images found!")
+
+@interactions.slash_command(name="sunghoon", description="Get a random image of Sunghoon")
+async def sunghoon(ctx):
+    image_path = get_random_image("sunghoon")
+    if image_path:
+        await ctx.send(files=interactions.File(image_path))
+    else:
+        await ctx.send("No Sunghoon images found!")
+
+@interactions.slash_command(name="sunoo", description="Get a random image of Sunoo")
+async def sunoo(ctx):
+    image_path = get_random_image("sunoo")
+    if image_path:
+        await ctx.send(files=interactions.File(image_path))
+    else:
+        await ctx.send("No Sunoo images found!")
+
+@interactions.slash_command(name="ni_ki", description="Get a random image of Ni-ki")
+async def ni_ki(ctx):
+    image_path = get_random_image("ni_ki")
+    if image_path:
+        await ctx.send(files=interactions.File(image_path))
+    else:
+        await ctx.send("No Ni-ki images found!")
+
+@interactions.slash_command(name="enhypen", description="Get a random image of the group Enhypen")
+async def enhypen(ctx):
+    image_path = get_random_image("enhypen")
+    if image_path:
+        await ctx.send(files=interactions.File(image_path))
+    else:
+        await ctx.send("No Enhypen group images found!")
 
 
-# Register all image commands
-create_image_command("jungwon", "Get a random image of Jungwon")
-create_image_command("heeseung", "Get a random image of Heeseung")
-create_image_command("jay", "Get a random image of Jay")
-create_image_command("jake", "Get a random image of Jake")
-create_image_command("sunghoon", "Get a random image of Sunghoon")
-create_image_command("sunoo", "Get a random image of Sunoo")
-create_image_command("ni_ki", "Get a random image of Ni-ki")
-
-# Keep alive (only needed if running on Render with web service)
+# Keep alive (for Render)
 keep_alive()
 
 # Start the bot
